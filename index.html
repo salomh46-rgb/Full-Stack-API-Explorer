@@ -4,44 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Full-Stack API Explorer</title>
-    <style>
-      :root {
-        color-scheme: light;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, #f4f7fb, #dfe9f3);
-      }
-
-      .card {
-        width: min(640px, 90vw);
-        background: #ffffff;
-        border-radius: 16px;
-        box-shadow: 0 12px 40px rgba(15, 23, 42, 0.15);
-        padding: 2rem;
-      }
-
-      h1 {
-        margin: 0 0 0.5rem;
-        color: #0f172a;
-      }
-
-      p {
-        margin: 0;
-        color: #475569;
-        line-height: 1.6;
-      }
-    </style>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <main class="card">
-      <h1 id="title"></h1>
-      <p id="description"></p>
+    <main class="app-shell">
+      <section class="card hero-card">
+        <div class="eyebrow">Backend Data</div>
+        <h1 id="title"></h1>
+        <p id="description"></p>
+      </section>
+
+      <section class="card form-card">
+        <h2 id="form-title">Add a new project</h2>
+        <form id="project-form" class="project-form">
+          <input id="project-id" name="id" type="hidden" />
+          <div class="form-row">
+            <label>
+              Title
+              <input id="project-title" name="title" type="text" placeholder="Project title" required />
+            </label>
+            <label>
+              Description
+              <textarea id="project-description" name="description" placeholder="Project description" required></textarea>
+            </label>
+          </div>
+          <div class="action-row">
+            <button id="submit-button" type="submit">Save Project</button>
+            <button id="cancel-edit" type="button" class="secondary-button hidden">Cancel</button>
+          </div>
+          <div id="form-message" aria-live="polite"></div>
+        </form>
+      </section>
+
+      <section class="card list-card">
+        <h2>Projects</h2>
+        <ul id="project-list" class="project-list"></ul>
+      </section>
     </main>
 
     <script type="module" src="/script.js"></script>
